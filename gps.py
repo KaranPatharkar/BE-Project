@@ -17,11 +17,11 @@ def GPS_Info():
     print("NMEA Time: ", nmea_time,'\n')
     print ("NMEA Latitude:", nmea_latitude,"NMEA Longitude:", nmea_longitude,'\n')
     
-    lat = nmea_latitude                  #convert string into float for calculation
-    longi = nmea_longitude               #convertr string into float for calculation
+    lat = float(nmea_latitude)                  #convert string into float for calculation
+    longi = float(nmea_longitude)               #convertr string into float for calculation
     
-    lat_in_degrees = lat    #get latitude in degree decimal format
-    long_in_degrees = longi #get longitude in degree decimal format
+    lat_in_degrees = convert_to_degrees(lat)    #get latitude in degree decimal format
+    long_in_degrees = convert_to_degrees(longi) #get longitude in degree decimal format
     
 #convert raw NMEA string into degree decimal format   
 def convert_to_degrees(raw_value):
@@ -46,10 +46,11 @@ long_in_degrees = 0
 try:
     print("Hello try")
     while True:
-		#print("Hello while")
+	#print("Hello while")
         received_data = (str)(ser.readline())
-        print("Hello while")                   #read NMEA string received
-        GPGGA_data_available = received_data.find(gpgga_info)   #check for NMEA GPGGA string                 
+        #print("Hello while1",received_data)                   #read NMEA string received
+        GPGGA_data_available = received_data.find(gpgga_info)
+	#print("---",GPGGA_data_available)   #check for NMEA GPGGA string                 
         if (GPGGA_data_available>0):
             GPGGA_buffer = received_data.split("$GPGGA,",1)[1]
             print("Hello if")  #store data coming after "$GPGGA," string 
