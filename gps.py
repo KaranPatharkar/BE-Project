@@ -51,7 +51,7 @@ try:
         #print("Hello while1",received_data)                   #read NMEA string received
         GPGGA_data_available = received_data.find(gpgga_info)
 	#print("---",GPGGA_data_available)   #check for NMEA GPGGA string                 
-        if (GPGGA_data_available>0):
+        if (GPGGA_data_available>-1):
             GPGGA_buffer = received_data.split("$GPGGA,",1)[1]
             print("Hello if")  #store data coming after "$GPGGA," string 
             NMEA_buff = (GPGGA_buffer.split(','))               #store comma separated data in buffer
