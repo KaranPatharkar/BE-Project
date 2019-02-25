@@ -5,6 +5,7 @@ from LocalStorage import storage
 import json
 
 class FleetData:
+	@staticmethod
 	def fleet_data():
 		CloudStore.cloud_connect()
 		dict = {}

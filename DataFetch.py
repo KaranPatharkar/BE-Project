@@ -4,6 +4,7 @@ import serial
 from OBDCodes import Codes
 
 class FetchObd:
+	@staticmethod
 	def fetch_protocols():
 		obd.logger.setLevel(obd.logging.DEBUG)   # debug
 		ports = obd.scan_serial()                # return list of valid USB or RF ports
@@ -16,7 +17,7 @@ class FetchObd:
 			if response.value[pid] == 'True':
 				accepted_protocols.append(hex(pid))
 		return accepted_protocols
-
+	@staticmethod
 	def fetch_data():
 		protocol_list = FetchObd.fetch_protocols()
 		dict = {}

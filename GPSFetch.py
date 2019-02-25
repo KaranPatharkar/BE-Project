@@ -3,6 +3,7 @@ from time import sleep
 import sys
 
 class FetchGps:
+	@staticmethod
 	def gps_info():
 		global NMEA_buff
 		global lat_in_degrees
@@ -37,7 +38,7 @@ class FetchGps:
 		long_in_degrees = convert_to_degrees(longi) #get longitude in degree decimal format
 		ser.close()
 		return lat_in_degrees, long_in_degrees
-
+	@staticmethod
 	def convert_to_degrees(raw_value):
 		decimal_value = raw_value/100.00
 		degrees = int(decimal_value)
