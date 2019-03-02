@@ -8,12 +8,14 @@ class CloudStore:
 		client = Cloudant.iam("97791747-97ab-4405-8017-0b3f4d661109-bluemix", "bVvvWRZrFp5smkAr20u9-yltNY-w9k89_kXMzcacOsj6")
 		client.connect()
 		databaseName = "fleet_db"
-		global myDatabase
+		#global myDatabase
 		myDatabase = client.create_database(databaseName)
 		if myDatabase.exists():
 			print ("'{0}' successfully created.\n".format(databaseName))
+		return myDatabase
+
 	@staticmethod
-	def cloud_insert(params):
+	def cloud_insert(myDatabase,params):
 		newDocument = myDatabase.create_document(params)
 		# Check that the document exists in the database.
 		if newDocument.exists():
