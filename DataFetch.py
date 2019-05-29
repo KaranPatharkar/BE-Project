@@ -8,7 +8,7 @@ class FetchObd:
 	def fetch_protocols():
 		obd.logger.setLevel(obd.logging.DEBUG)   # debug
 		ports = obd.scan_serial()                # return list of valid USB or RF ports
-		print(ports)                             # ['/dev/ttyUSB0', '/dev/ttyUSB1']
+		print("PORTS:",ports)                             # ['/dev/ttyUSB0', '/dev/ttyUSB1']
 		connection = obd.OBD(ports[0], baudrate=38400, fast=False)
 		# cmd = obd.commands.PIDS_A
 		# response = connection.query(cmd)
