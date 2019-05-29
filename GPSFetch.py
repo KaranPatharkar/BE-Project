@@ -9,9 +9,9 @@ class GPS_Fetch:
         global lat_in_degrees
         global long_in_degrees
         gpgga_info = "$GPGGA,"
-        print("Hello")
+        #print("Hello")
         ser = serial.Serial (port="/dev/ttyS0",baudrate=9600)
-        print("Hello serial")              #Open port with baud rate
+        #print("Hello serial")              #Open port with baud rate
         GPGGA_buffer = 0
         NMEA_buff = 0
         lat_in_degrees = 0
@@ -29,7 +29,7 @@ class GPS_Fetch:
             if (GPGGA_data_available>-1):
                 k=0
                 GPGGA_buffer = received_data.split("$GPGGA,",1)[1]
-                print("Hello if")  #store data coming after "$GPGGA," string 
+                #print("Hello if")  #store data coming after "$GPGGA," string 
                 NMEA_buff = (GPGGA_buffer.split(','))               #store comma separated data in buffer
                 
         nmea_time = []
@@ -60,7 +60,7 @@ class GPS_Fetch:
         return position
         
 
-print(GPS_Fetch.GPS_Info())                                          #get time, latitude, longitude
+#print(GPS_Fetch.GPS_Info())                                          #get time, latitude, longitude
             
             #map_link = 'http://maps.google.com/?q=' + lat_in_degrees + ',' + long_in_degrees    #create link to plot location on Google map
             #print("<<<<<<<<press ctrl+c to plot location on google maps>>>>>>\n")               #press ctrl+c to plot on map and exit 
